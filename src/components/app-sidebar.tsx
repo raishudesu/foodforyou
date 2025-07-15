@@ -18,7 +18,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { SidebarTopLogo } from "./sidebar-top-logo";
-import { NavUser } from "../../nav-user";
+import { NavUser } from "./nav-user";
 
 // Menu items.
 const items = [
