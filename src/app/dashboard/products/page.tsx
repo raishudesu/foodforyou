@@ -71,7 +71,7 @@ export default function ProductsPage() {
           {!showForm && (
             <Button
               onClick={() => setShowForm(true)}
-              className="bg-green-600 hover:bg-green-700"
+              className="hidden md:flex bg-green-600 hover:bg-green-700"
             >
               <Plus className="h-4 w-4 mr-2" />
               Add Product
@@ -85,7 +85,7 @@ export default function ProductsPage() {
           <>
             {/* Page Header */}
             <div className="rounded-lg bg-gradient-to-r from-green-50 to-blue-50 p-6">
-              <div className="flex items-center justify-between">
+              <div className="flex md:items-center flex-col md:flex-row justify-between">
                 <div>
                   <h1 className="text-2xl font-bold text-gray-900 flex items-center">
                     <Package className="h-6 w-6 mr-2" />
@@ -102,7 +102,7 @@ export default function ProductsPage() {
                     Show sample product
                   </Link>
                 </div>
-                <div className="text-right">
+                <div className="md:text-right">
                   <p className="text-sm text-gray-500">Growth Plan</p>
                   <p className="text-lg font-semibold text-green-600">
                     12 of 15 products
@@ -110,13 +110,22 @@ export default function ProductsPage() {
                 </div>
               </div>
             </div>
+            {!showForm && (
+              <Button
+                onClick={() => setShowForm(true)}
+                className="bg-green-600 hover:bg-green-700"
+              >
+                <Plus className="h-4 w-4 mr-2" />
+                Add Product
+              </Button>
+            )}
 
             <ProductsList />
           </>
         ) : (
           <>
             <div className="rounded-lg bg-gradient-to-r from-green-50 to-blue-50 p-6">
-              <div className="flex items-center justify-between">
+              <div className="flex md:items-center flex-col md:flex-row gap-2 justify-between">
                 <div>
                   <h1 className="text-2xl font-bold text-gray-900">
                     Add New Product

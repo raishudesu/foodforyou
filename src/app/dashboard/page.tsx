@@ -26,17 +26,7 @@ import { Badge } from "@/components/ui/badge";
 
 export default async function Dashboard() {
   return (
-    <div className="w-full p-6 flex flex-col gap-4">
-      <div className="mb-6 flex flex-col sm:flex-row items-stretch gap-4 sm:justify-between sm:items-center">
-        <div>
-          <p className="text-muted-foreground">
-            Welcome back, <span className="font-bold">Barysh</span>! 🎉
-          </p>
-          <h1 className="text-3xl font-bold tracking-tight text-primary">
-            Food For You Dashboard
-          </h1>
-        </div>
-      </div>
+    <div className="w-full flex flex-col gap-4">
       <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
         <SidebarTrigger className="-ml-1" />
         <Separator orientation="vertical" className="mr-2 h-4" />
@@ -63,7 +53,7 @@ export default async function Dashboard() {
       <div className="flex flex-1 flex-col gap-4 p-4">
         {/* Welcome Section */}
         <div className="rounded-lg bg-gradient-to-r from-green-50 to-blue-50 p-6">
-          <div className="flex items-center justify-between">
+          <div className="flex md:items-center flex-col md:flex-row gap-2 justify-between">
             <div>
               <h1 className="text-2xl font-bold text-gray-900">
                 Welcome back, Barkov&lsquo;s Kitchen!
@@ -72,7 +62,7 @@ export default async function Dashboard() {
                 Here&lsquo;s what&lsquo;s happening with your products today.
               </p>
             </div>
-            <div className="text-right">
+            <div className="md:text-right">
               <p className="text-sm text-gray-500">Current Plan</p>
               <Badge className="bg-green-600">Growth - 12 Products</Badge>
             </div>
@@ -116,7 +106,9 @@ export default async function Dashboard() {
         </div>
 
         {/* Charts Section */}
-        <AnalyticsCharts />
+        <div className="w-full">
+          <AnalyticsCharts />
+        </div>
 
         {/* Bottom Section */}
         <div className="grid gap-6 md:grid-cols-2">

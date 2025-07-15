@@ -1,7 +1,17 @@
-"use client"
+"use client";
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
 import {
   Line,
   LineChart,
@@ -14,7 +24,7 @@ import {
   PieChart,
   Pie,
   Cell,
-} from "recharts"
+} from "recharts";
 
 // Sample data for QR scans over time
 const scanData = [
@@ -25,7 +35,7 @@ const scanData = [
   { date: "May", scans: 1800, views: 3600 },
   { date: "Jun", scans: 2200, views: 4400 },
   { date: "Jul", scans: 2400, views: 4800 },
-]
+];
 
 // Sample data for customer demographics
 const demographicData = [
@@ -34,7 +44,7 @@ const demographicData = [
   { age: "36-45", count: 520 },
   { age: "46-55", count: 340 },
   { age: "55+", count: 210 },
-]
+];
 
 // Sample data for product categories
 const categoryData = [
@@ -43,18 +53,20 @@ const categoryData = [
   { name: "Snacks", value: 20, color: "#f59e0b" },
   { name: "Dried Fruits", value: 15, color: "#ef4444" },
   { name: "Others", value: 5, color: "#8b5cf6" },
-]
+];
 
 export function AnalyticsCharts() {
   return (
-    <div className="grid gap-6 md:grid-cols-2">
+    <div className="w-full flex flex-col gap-6 md:grid md:grid-cols-2">
       {/* QR Scans Trend */}
-      <Card>
+      <Card className="w-full">
         <CardHeader>
           <CardTitle>QR Scans & Views Trend</CardTitle>
-          <CardDescription>Monthly performance over the last 7 months</CardDescription>
+          <CardDescription>
+            Monthly performance over the last 7 months
+          </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="w-full">
           <ChartContainer
             config={{
               scans: {
@@ -66,7 +78,7 @@ export function AnalyticsCharts() {
                 color: "hsl(var(--chart-2))",
               },
             }}
-            className="h-[300px]"
+            className="h-[300px] w-full"
           >
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={scanData}>
@@ -74,8 +86,18 @@ export function AnalyticsCharts() {
                 <XAxis dataKey="date" />
                 <YAxis />
                 <ChartTooltip content={<ChartTooltipContent />} />
-                <Line type="monotone" dataKey="scans" stroke="var(--color-scans)" strokeWidth={2} />
-                <Line type="monotone" dataKey="views" stroke="var(--color-views)" strokeWidth={2} />
+                <Line
+                  type="monotone"
+                  dataKey="scans"
+                  stroke="var(--color-scans)"
+                  strokeWidth={2}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="views"
+                  stroke="var(--color-views)"
+                  strokeWidth={2}
+                />
               </LineChart>
             </ResponsiveContainer>
           </ChartContainer>
@@ -86,7 +108,9 @@ export function AnalyticsCharts() {
       <Card>
         <CardHeader>
           <CardTitle>Customer Demographics</CardTitle>
-          <CardDescription>Age distribution of customers scanning your products</CardDescription>
+          <CardDescription>
+            Age distribution of customers scanning your products
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <ChartContainer
@@ -96,7 +120,7 @@ export function AnalyticsCharts() {
                 color: "hsl(var(--chart-1))",
               },
             }}
-            className="h-[300px]"
+            className="h-[300px] w-full"
           >
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={demographicData}>
@@ -115,7 +139,9 @@ export function AnalyticsCharts() {
       <Card>
         <CardHeader>
           <CardTitle>Product Categories</CardTitle>
-          <CardDescription>Distribution of scans by product category</CardDescription>
+          <CardDescription>
+            Distribution of scans by product category
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="h-[300px]">
@@ -139,12 +165,16 @@ export function AnalyticsCharts() {
                     if (active && payload && payload.length) {
                       return (
                         <div className="bg-white p-2 border rounded shadow">
-                          <p className="font-medium">{payload[0].payload.name}</p>
-                          <p className="text-sm text-muted-foreground">{payload[0].value}% of total scans</p>
+                          <p className="font-medium">
+                            {payload[0].payload.name}
+                          </p>
+                          <p className="text-sm text-muted-foreground">
+                            {payload[0].value}% of total scans
+                          </p>
                         </div>
-                      )
+                      );
                     }
-                    return null
+                    return null;
                   }}
                 />
               </PieChart>
@@ -153,9 +183,14 @@ export function AnalyticsCharts() {
           <div className="grid grid-cols-2 gap-2 mt-4">
             {categoryData.map((item) => (
               <div key={item.name} className="flex items-center space-x-2">
-                <div className="w-3 h-3 rounded-full" style={{ backgroundColor: item.color }} />
+                <div
+                  className="w-3 h-3 rounded-full"
+                  style={{ backgroundColor: item.color }}
+                />
                 <span className="text-sm">{item.name}</span>
-                <span className="text-sm text-muted-foreground ml-auto">{item.value}%</span>
+                <span className="text-sm text-muted-foreground ml-auto">
+                  {item.value}%
+                </span>
               </div>
             ))}
           </div>
@@ -166,7 +201,9 @@ export function AnalyticsCharts() {
       <Card>
         <CardHeader>
           <CardTitle>Top Locations</CardTitle>
-          <CardDescription>Cities with highest product engagement</CardDescription>
+          <CardDescription>
+            Cities with highest product engagement
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
@@ -180,10 +217,15 @@ export function AnalyticsCharts() {
               <div key={location.city} className="space-y-2">
                 <div className="flex justify-between text-sm">
                   <span className="font-medium">{location.city}</span>
-                  <span className="text-muted-foreground">{location.scans} scans</span>
+                  <span className="text-muted-foreground">
+                    {location.scans} scans
+                  </span>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div className="bg-green-600 h-2 rounded-full" style={{ width: `${location.percentage}%` }} />
+                  <div
+                    className="bg-green-600 h-2 rounded-full"
+                    style={{ width: `${location.percentage}%` }}
+                  />
                 </div>
               </div>
             ))}
@@ -191,5 +233,5 @@ export function AnalyticsCharts() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }
