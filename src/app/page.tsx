@@ -43,7 +43,9 @@ export default function Home() {
             <Link href="#about" className="text-gray-600 hover:text-primary">
               About
             </Link>
-            <Button variant="outline">Sign In</Button>
+            <Button variant="outline" asChild>
+              <Link href="/login">Sign In</Link>
+            </Button>
             <Button>Get Started</Button>
           </div>
           <div className="md:hidden">
@@ -69,8 +71,10 @@ export default function Home() {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button size="lg">
-            Start Your Journey
-            <ArrowRight className="ml-2 h-4 w-4" />
+            <Link href={"/login"} className="flex items-center">
+              Start Your Journey
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
           </Button>
           <Button size="lg" variant="outline">
             Watch Demo

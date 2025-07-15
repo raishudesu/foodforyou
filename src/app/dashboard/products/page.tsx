@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ProductsList } from "@/components/products-list";
 import { SuccessModal } from "@/components/success-modal";
+import Link from "next/link";
 
 export default function ProductsPage() {
   const [showForm, setShowForm] = useState(false);
@@ -94,6 +95,12 @@ export default function ProductsPage() {
                     Add and manage your food products with detailed information
                     and certifications.
                   </p>
+                  <Link
+                    href={"/p/1"}
+                    className="hover:underline text-blue-500 text-xs"
+                  >
+                    Show sample product
+                  </Link>
                 </div>
                 <div className="text-right">
                   <p className="text-sm text-gray-500">Growth Plan</p>
