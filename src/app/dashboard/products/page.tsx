@@ -113,7 +113,7 @@ export default function ProductsPage() {
             {!showForm && (
               <Button
                 onClick={() => setShowForm(true)}
-                className="bg-green-600 hover:bg-green-700"
+                className="md:hidden bg-green-600 hover:bg-green-700"
               >
                 <Plus className="h-4 w-4 mr-2" />
                 Add Product
